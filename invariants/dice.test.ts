@@ -119,3 +119,45 @@ test("missing bet and double resolve refused", () => {
   const once = deliver(open, "1", "01" + "11".repeat(31));
   assert.throws(() => deliver(once, "1", "01" + "11".repeat(31)), /already resolved/);
 });
+
+test("over 2 wins on high roll", () => {
+  const chance = winChance("over", 2);
+  assert.equal(chance, 98);
+  const extra = winPayout(1000n, chance) - 1000n;
+  const open = place(emptyBooks(extra), {
+    id: "1",
+    player: "alice",
+    stake: "1000",
+    side: "over",
+    threshold: 2,
+  });
+  const hex = "62" + "11".repeat(31);
+  const paid = deliver(open, "1", hex);
+  assert.equal(paid.bets[0].roll, 99);
+  assert.ok(BigInt(paid.bets[0].payout!) > 0n);
+});
+
+test("duplicate bet id refused", () => {
+  const open = place(emptyBooks(50000n), {
+    id: "1",
+    player: "alice",
+    stake: "100",
+    side: "under",
+    threshold: 50,
+  });
+  assert.throws(
+    () => place(open, { id: "1", player: "bob", stake: "100", side: "under", threshold: 50 }),
+    /duplicate id/,
+  );
+});
+
+test("bad random hex refused", () => {
+  const open = place(emptyBooks(50000n), {
+    id: "1",
+    player: "alice",
+    stake: "100",
+    side: "under",
+    threshold: 50,
+  });
+  assert.throws(() => deliver(open, "1", "zz"), /bad random/);
+});

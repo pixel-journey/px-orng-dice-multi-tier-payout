@@ -1,10 +1,11 @@
-# Security
+# Security notes — dice
 
-| Surface | Closed by |
+| Mitigated | Behavior |
 | --- | --- |
-| Insolvent payout promise | bank ≥ extra at place |
-| Biased roll | reject bytes 200..255 |
-| Double settle | already resolved |
-| Zero / bad threshold | refused |
+| Bad threshold / side | refused |
+| Bank < extra | place refused |
+| Reject sample | no settle |
+| Second deliver | refused |
+| Duplicate bet id | refused |
 
-Not claimed: live ORNG delivery, credit payment, wasm.
+Production: oracle auth, real token escrow, pause, credit checks before open.

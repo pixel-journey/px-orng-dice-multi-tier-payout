@@ -1,8 +1,7 @@
-# Tips — dice on ORNG
+# Tips
 
-- Always **reserve max loss to the bank** (extra) before accepting.
-- Rejection sampling must not default to a face — rerequest entropy.
-- Wire deliver only from the dual-callback resolver after once-only resolve.
-- Related: [coinflip](https://github.com/pixel-journey/px-orng-coinflip-escrow), [roulette](https://github.com/pixel-journey/px-orng-roulette-wheel-escrow).
-
-Path: [ORNG-LEARNING-PATH](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/ORNG-LEARNING-PATH.md).
+- Reserve `payout - stake` at `place`, not at `deliver`. A win that the bank cannot cover should never be accepted.
+- Under 50 is 49 chances (rolls 1..49), not 50. That off-by-one is the test `winChance("under", 50) === 49`.
+- Bytes 200..255 are a rerequest, same idea as the coinflip lab's 254..255, with a different modulus.
+- `19600` is the payout for chance 50 and stake `10000` after a 200 bps edge. Do not reuse that number for under-50, whose chance is 49.
+- A rejected sample must not move escrow. The test throws before settle.

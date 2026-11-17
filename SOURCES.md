@@ -1,11 +1,9 @@
-# Official sources
+# Sources
 
 | Source | Use |
 | --- | --- |
-| [wax-orng](https://github.com/worldwide-asset-exchange/wax-orng) | Production RNG |
-| [RNG tutorial](https://docs.wax.io/build/tutorials/create-wax-rng-smart-contract/rng_sample) | Sample path |
-| [docs.wax.io](https://docs.wax.io/) | Network docs |
+| [wax-orng](https://github.com/worldwide-asset-exchange/wax-orng) | Entropy delivery |
+| [RNG tutorial](https://docs.wax.io/build/tutorials/create-wax-rng-smart-contract/rng_sample) | Sample dapp |
+| [docs.wax.io](https://docs.wax.io/) | WAX development |
 
-## Related
-
-[dual-callback](https://github.com/pixel-journey/px-orng-dual-callback-idempotent) · [v3 starter](https://github.com/pixel-journey/px-orng-v3-randnotify-starter) · [ORNG path](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/ORNG-LEARNING-PATH.md)
+Related: [coinflip](https://github.com/pixel-journey/px-orng-coinflip-escrow) · [roulette](https://github.com/pixel-journey/px-orng-roulette-wheel-escrow) · [loot CDF](https://github.com/pixel-journey/px-orng-weighted-loot-table-cdf) · [ORNG-LEARNING-PATH](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/ORNG-LEARNING-PATH.md)

@@ -1,11 +1,18 @@
-# Security notes — dice
+# Security — dice multi-tier payout
 
-| Mitigated | Behavior |
+## Closed in tests
+
+| Issue | Behavior |
 | --- | --- |
-| Bad threshold / side | refused |
-| Bank < extra | place refused |
+| Bad threshold / zero stake | refused |
+| Bank cannot reserve | refused |
 | Reject sample | no settle |
-| Second deliver | refused |
-| Duplicate bet id | refused |
+| Missing / duplicate bet id | refused |
+| Second deliver | already resolved |
+| Bad entropy | refused |
 
-Production: oracle auth, real token escrow, pause, credit checks before open.
+## Not closed
+
+Oracle auth, real token transfers, multi-bet global solvency, live credits.
+
+No `orng.wax` broadcast in this repository.

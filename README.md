@@ -2,8 +2,8 @@
 
 > **Domain:** WAX ORNG — dice payout  
 > **Sources:** [SOURCES.md](SOURCES.md)  
-> **Catalog:** [px-contract-examples-vault](https://github.com/pixel-journey/px-contract-examples-vault)  
-> **Path:** [ORNG-LEARNING-PATH.md](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/ORNG-LEARNING-PATH.md)
+> **Catalog:** `px-contract-examples-vault` (private index; not this public course)  
+> **Path:** `px-contract-examples-vault` (private index; not this public course)
 
 **Goal:** Under/over threshold (2..98), rejection-sampled roll 1..100, 200 bps house edge, bank **reserves the extra before the bet is accepted**.
 

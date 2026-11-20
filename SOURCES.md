@@ -16,4 +16,4 @@
 | [roulette](https://github.com/pixel-journey/px-orng-roulette-wheel-escrow) | 0–36; reject 222–255 |
 | [loot CDF](https://github.com/pixel-journey/px-orng-weighted-loot-table-cdf) | Weighted bands |
 | [byte-slicer](https://github.com/pixel-journey/px-orng-byte-slicer-multi-roll) | Multi-window rolls |
-| [ORNG path](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/ORNG-LEARNING-PATH.md) | Reject windows cheatsheet |
+| `px-contract-examples-vault` (private index; not this public course) | Reject windows cheatsheet |

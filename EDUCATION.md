@@ -31,6 +31,10 @@ Faces are **1..100**. Threshold must be **2..98**.
 
 **Common mistake:** treating under-50 as 50% chance. The tests lock **49**.
 
+```bash
+npm test
+```
+
 ---
 
 ## Intermediate — roll and payout
@@ -57,6 +61,16 @@ payout = floor(S * 100 * (10000 - 200) / (C * 10000))
 
 Example: S=10000, C=50 → **19600**. Do **not** reuse 19600 for under-50 (chance 49).
 
+### Attack → test
+
+| Attack | Lab behavior |
+| --- | --- |
+| Accept bet bank cannot cover | `bank` refused |
+| Settle reject sample | throw; open bet remains |
+| Share one extra across two max bets | second place fails |
+| Zero stake | refused |
+| Treat under-50 as 50% | tests lock **49** |
+
 ---
 
 ## Masterclass — bank reserve
@@ -70,26 +84,27 @@ Before `place`, bank must hold `payout - stake` (the **extra**). On place, extra
 | Reject | Status rerequest / throw; money stays |
 | Second deliver | already resolved |
 
-### Attack → test angles
-
-| Attack | Lab behavior |
-| --- | --- |
-| Accept bet bank cannot cover | `bank` refused |
-| Settle reject sample | throw; open bet remains |
-| Share one extra across two max bets | second place fails |
-| Zero stake | refused |
-
 ### Nice-to-have product extensions (not in this repo)
 
-- Multi-tier ladders (exact face bonuses) — new chance table + tests.  
-- Live dual-callback binding of entropy.  
-- Token payout in same action as book clear.  
-- Credit/stake gates before place — [credit bucket](https://github.com/pixel-journey/px-orng-credit-bucket-monitor).
-
-Numbers: [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md).
+| Idea | Note |
+| --- | --- |
+| Multi-tier ladders (exact face bonuses) | New chance table + tests |
+| Live dual-callback binding of entropy | Infra labs |
+| Token payout in same action as book clear | Production |
+| Credit/stake gates before place | [credit bucket](https://github.com/pixel-journey/px-orng-credit-bucket-monitor) |
 
 ### Exercises
 
-1. winChance under 50? (49)  
-2. Byte 200 — settle or reject?  
-3. Why reserve at place not deliver?
+1. winChance under 50? (**49**.)  
+2. Byte 200 — settle or reject? (**Reject**.)  
+3. Why reserve at place not deliver? (Bank must cover max payout before the bet is live.)
+
+Numbers: [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md) · [SECURITY](SECURITY.md) · [SOURCES](SOURCES.md).
+
+---
+
+## What this course will not teach
+
+- Live `requestrand` / oracle auth
+- That under-50 is a fair coin
+- Token broadcast of payouts
